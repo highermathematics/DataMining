@@ -1,0 +1,56 @@
+# 1. 虚拟环境（核心忽略项）
+venv/
+env/
+.env/
+ENV/
+*.env
+.venv/
+
+# 2. Python字节码与缓存
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# 3. 依赖管理相关
+*.egg-info/
+dist/
+build/
+wheels/
+*.whl
+requirements.txt  # 注：若需共享依赖清单，可删除这行
+pip-wheel-metadata/
+
+# 4. 日志与临时文件
+logs/
+*.log
+tmp/
+temp/
+*.tmp
+*.temp
+
+# 5. IDE配置（含PyCharm/VS Code等）
+.idea/  # PyCharm配置
+.vscode/  # VS Code配置
+*.sublime-project
+*.sublime-workspace
+.idea/workspace.xml
+.idea/inspectionProfiles/
+
+# 6. 操作系统文件
+.DS_Store  # Mac系统
+Thumbs.db  # Windows系统
+desktop.ini  # Windows系统
+
+# 7. 其他杂项
+*.swp  # Vim临时文件
+*.bak  # 备份文件
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+.ipynb_checkpoints
