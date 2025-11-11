@@ -154,12 +154,6 @@ def print_results(all_frequent_itemsets):
     print(f"共{total_count}个频繁项集")
     print(frequent_itemsets)
 
-def get_total_transactions(transactions):
-    total_transactions = 0
-    for transaction in transactions:
-        total_transactions += len(transaction)
-    return total_transactions
-
 if __name__ == '__main__':
     # 加载数据
     transactions = load_data('retail.dat')
@@ -168,7 +162,7 @@ if __name__ == '__main__':
     min_support = 0.01
 
     if min_support < 1:
-        min_support = get_total_transactions(transactions) * min_support
+        min_support = len(transactions) * min_support
 
     all_frequent_itemsets = apriori(transactions, min_support)
 
@@ -204,5 +198,4 @@ a b c f l m o
 b f h j o
 b c k s p
 a f c e l p m n
-
 """
