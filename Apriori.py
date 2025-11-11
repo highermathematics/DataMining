@@ -154,11 +154,21 @@ def print_results(all_frequent_itemsets):
     print(f"共{total_count}个频繁项集")
     print(frequent_itemsets)
 
+def get_total_transactions(transactions):
+    total_transactions = 0
+    for transaction in transactions:
+        total_transactions += len(transaction)
+    return total_transactions
+
 if __name__ == '__main__':
     # 加载数据
-    transactions = load_data('data.dat')
+    transactions = load_data('retail.dat')
     # 最小支持度
-    min_support = 2
+
+    min_support = 0.01
+
+    if min_support < 1:
+        min_support = get_total_transactions(transactions) * min_support
 
     all_frequent_itemsets = apriori(transactions, min_support)
 
@@ -167,9 +177,31 @@ if __name__ == '__main__':
     # print(f"交易: {transactions}")
     # ans = get_L1(transactions, min_support)
     # print(f"L1:{ans}")
-    # ans2 = link(ans,k)
+    # ans2 = link(ans,2)
     # print(f"C2未剪枝：{ans2}")
     # ans3 = cut(ans2,ans)
     # print(f"C2剪枝后：{ans3}")
     # ans4 = get_Lk(ans3,transactions, min_support)
     # print(f"L2:{ans4}")
+    #
+    # ans5 = link(ans4, 3)
+    # print(f"C3未剪枝：{ans5}")
+    # ans6 = cut(ans5, ans4)
+    # print(f"C3剪枝后：{ans6}")
+    # ans7 = get_Lk(ans6, transactions, min_support)
+    # print(f"L3:{ans7}")
+
+"""
+1 3 4
+2 3 5
+1 2 3 5
+3 5
+"""
+
+"""
+f a c d g i m p
+a b c f l m o
+b f h j o
+b c k s p
+a f c e l p m n
+"""
